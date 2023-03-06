@@ -1,5 +1,5 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { AuthDto } from './auth.dto';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { AuthDto, AuthSearchDto } from './auth.dto';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -15,5 +15,11 @@ export class AuthController {
     });
 
     return { authentacted: user };
+  }
+
+  @Get('/search')
+  async search(@Body() body: AuthSearchDto) {
+    const { email } = body;
+    await this.authService.search({ email });
   }
 }
