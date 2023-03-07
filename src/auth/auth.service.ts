@@ -2,14 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { Client as LdapClient } from 'ldapts';
 import { ConfigService } from '@nestjs/config';
 
-type AuthenticationParams = {
-  username: string;
-  password: string;
-};
-
-type SearchParams = {
-  email: string;
-};
+import {
+  AuthenticationParams,
+  SearchParams,
+} from './interfaces/auth.interface';
 
 @Injectable()
 export class AuthService {
